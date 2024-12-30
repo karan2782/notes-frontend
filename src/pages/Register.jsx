@@ -6,6 +6,7 @@ function Register() {
     const [email, setEmail] = useState("")
     const [gender, setGender] = useState("")
     const [password, setPassword] = useState("")
+    const [loading, setLoading] = useState(false)
 
     const navigate = useNavigate()
     
@@ -18,6 +19,7 @@ function Register() {
         }
 
         try {
+          setLoading(true)
             const res = await fetch(`https://devnoteapp.onrender.com/user/register`, {
                 method: 'POST',
                 headers: {
@@ -26,8 +28,10 @@ function Register() {
                 body: JSON.stringify(payload)
             })
             alert('User registered successfully')
+            setLoading(false)
             navigate('/login')
         } catch (error) {
+          setLoading(false)
             alert(`An error occurred: ${error}`)
         }
     }
@@ -41,7 +45,7 @@ function Register() {
         <input type="text" placeholder='Enter email' value={email} onChange={(e)=> setEmail(e.target.value)} />
         <input type="text" placeholder='Enter gender' value={gender} onChange={(e)=> setGender(e.target.value)}  />
         <input type="text" placeholder='Enter password' value={password} onChange={(e)=> setPassword(e.target.value)} />
-        <button onClick={handleSubmit}>Submit</button>
+        <button onClick={handleSubmit}>{loading?"Registering...":"Register"}</button>
       </div>
     </div>
   )
