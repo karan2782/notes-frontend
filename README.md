@@ -1,10 +1,10 @@
-#Simple Note ToDo Full-Stack Application
+# Simple Note ToDo Full-Stack Application
 
-##Overview
+## Overview
 
 This is a simple full-stack application that allows users to manage their notes efficiently. Users can register, log in, and perform CRUD (Create, Read, Update, Delete) operations on their notes. The application provides a secure and intuitive interface to keep track of tasks or ideas.
 
-##Features
+## Features
 
 User Registration: New users can create an account.
 
@@ -20,13 +20,13 @@ Delete Notes: Remove notes no longer needed.
 
 CRUD Operations: Full support for Create, Read, Update, and Delete functionalities.
 
-##Tech Stack
+## Tech Stack
 
-##Frontend
+## Frontend
 
 HTML5, CSS3, JavaScript ,React.js
 
-##Backend
+## Backend
 Node.js
 
 Express.js
@@ -41,21 +41,21 @@ JSON Web Tokens (JWT) for authentication
 
 bcrypt for secure password hashing
 
-##Installation and Setup
+## Installation and Setup
 
-###Prerequisites
+### Prerequisites
 
--Node.js installed on your system.
+- Node.js installed on your system.
 
--MongoDB running locally or on the cloud.
+- MongoDB running locally or on the cloud.
 
--A package manager like npm.
+- A package manager like npm.
 
-##Steps to Run Locally
+## Steps to Run Locally
 
--git clone [<repository-url>](https://github.com/karan2782/notes-frontend.git)
+- git clone [<repository-url>](https://github.com/karan2782/notes-frontend.git)
 
--cd notes-frontend
+- cd notes-frontend
 
 
 
