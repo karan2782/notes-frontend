@@ -1,4 +1,4 @@
-import { Box, Input, Textarea } from "@chakra-ui/react";
+import { Box, Input, Text, Textarea } from "@chakra-ui/react";
 import { Field } from "../components/ui/field";
 import { Checkbox } from "../components/ui/checkbox";
 import { Button } from "../components/ui/button";
@@ -43,16 +43,19 @@ function CreateNote({ fetchNotes }) {
     }
   };
   return (
-    <Box>
+    <Box padding='20px' fontFamily="Playwrite IS">
       <form
         style={{
-          border: "1px solid black",
-          padding: "10px",
+          
+          borderRadius:"10px",
+          padding: "20px",
           display: "flex",
           flexDirection: "column",
           gap: "10px",
+          boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
         }}
       >
+      <Text fontSize="20px" fontWeight="bold" textAlign="center">Create Note</Text>
         <Field label="Title" required>
           <Input
             placeholder="Enter your title of note"
@@ -77,9 +80,11 @@ function CreateNote({ fetchNotes }) {
           Status
         </Checkbox>
         <Button
+        background="blue.600"
           loading={isLoading ? true : false}
           loadingText={isLoading ? "Creating Note" : ""}
           onClick={handleSubmit}
+          fontSize="16px"
         >
           Create Note
         </Button>

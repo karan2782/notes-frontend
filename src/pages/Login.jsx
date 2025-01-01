@@ -1,7 +1,8 @@
-import { Box, Button, Input, Text } from "@chakra-ui/react";
+import { Box,  Input, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Field } from "../components/ui/field";
+import {Button} from "../components/ui/button"
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -66,6 +67,8 @@ function Login() {
             placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            type="email"
+            autoComplete="email"
           />
         </Field>
         <Field label="Password" required>
@@ -73,10 +76,12 @@ function Login() {
             placeholder="Enter your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            type='password'
+            autoComplete="password"
           />
         </Field>
-        <Button backgroundColor='blue.600' disabled={loading} type='submit' mt="3" width="full">
-          {loading?"Loggin In...":"Login"}
+        <Button loading={loading} backgroundColor='blue.600' type='submit' mt="3" width="full" loadingText= {loading?"Logging in...":""}>
+          Login
         </Button>
         <Text mt='5'>
           <Link style={{color:"blue"}} to='/register'>Please Register</Link> , if you're not registered 

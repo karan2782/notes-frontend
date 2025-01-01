@@ -1,5 +1,6 @@
-import { Box, Input, Stack, Button, Text, LinkBox } from "@chakra-ui/react";
+import { Box, Input, Stack, Text, LinkBox } from "@chakra-ui/react";
 import { Field } from "../components/ui/field";
+import {Button} from "../components/ui/button";
 
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -14,10 +15,10 @@ function Register() {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    if(!name || !email || !password || !gender){
-      alert("All fileds is required")
-      return
+    e.preventDefault();
+    if (!name || !email || !password || !gender) {
+      alert("All fileds is required");
+      return;
     }
     const payload = {
       name,
@@ -45,14 +46,23 @@ function Register() {
   };
 
   return (
-    <Box fontFamily='Playwrite IS'>
+    <Box fontFamily="Playwrite IS">
       <form>
-        <Stack borderRadius='10px' border="1px solid grey" width="30vw" margin="auto" p="5" mt="5" gap='20px'>
-          <Text textAlign="center" fontSize="20px" fontWeight='bold'>
+        <Stack
+          borderRadius="10px"
+          border="1px solid grey"
+          width="30vw"
+          margin="auto"
+          p="5"
+          mt="5"
+          gap="20px"
+        >
+          <Text textAlign="center" fontSize="20px" fontWeight="bold">
             Register
           </Text>
           <Field required label="Name">
             <Input
+
               placeholder="Enter your name"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -61,6 +71,7 @@ function Register() {
 
           <Field required label="Email">
             <Input
+            type='email'
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -76,18 +87,29 @@ function Register() {
 
           <Field required label="Password">
             <Input
+            type="password"
               placeholder="Enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </Field>
 
-          
-          <Button disabled={loading} type='submit' background='blue.600' onClick={handleSubmit}>{loading?"Registering...":"Register"}</Button>
+          <Button
+            loading={loading ? true : false}
+            loadingText={loading ? "Registering..." : ""}
+            type="submit"
+            background="blue.600"
+            onClick={handleSubmit}
+          >
+            {loading ? "Registering..." : "Register"}
+          </Button>
 
-          <Text mt='5'>
-          <Link style={{color:"blue"}} to='/login'>Please Login</Link>, if you're already registered 
-        </Text>
+          <Text mt="5">
+            <Link style={{ color: "blue" }} to="/login">
+              Please Login
+            </Link>
+            , if you're already registered
+          </Text>
         </Stack>
       </form>
     </Box>
