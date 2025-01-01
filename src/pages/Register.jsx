@@ -45,10 +45,10 @@ function Register() {
   };
 
   return (
-    <Box>
+    <Box fontFamily='Playwrite IS'>
       <form>
         <Stack borderRadius='10px' border="1px solid grey" width="30vw" margin="auto" p="5" mt="5" gap='20px'>
-          <Text textAlign="center" fontSize="20px" fontWeight='500'>
+          <Text textAlign="center" fontSize="20px" fontWeight='bold'>
             Register
           </Text>
           <Field required label="Name">

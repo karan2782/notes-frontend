@@ -1,57 +1,91 @@
-import React, { useState } from 'react'
+import { Box, Input, Textarea } from "@chakra-ui/react";
+import { Field } from "../components/ui/field";
+import { Checkbox } from "../components/ui/checkbox";
+import { Button } from "../components/ui/button";
+import React, { useState } from "react";
 
-function CreateNote({fetchNotes}) {
-    const [title, setTitle] = useState('')
-    const [content, setContent] = useState('')
-    const [status, setStatus] = useState(false)
+function CreateNote({ fetchNotes }) {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [status, setStatus] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-    const handleSubmit = async (e)=>{
-        e.preventDefault()
-        console.log(title, content, status)
-        setTitle('')
-        setContent('')
-        setStatus(false)
-
-        const token = localStorage.getItem('token') 
-        try {
-            const res = await fetch(`https://devnoteapp.onrender.com/note/create`, {
-                method:"POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`
-                },
-                body: JSON.stringify({title, content, status}),
-            })
-            const data = await res.json()
-            
-            
-            alert(data.message)
-            fetchNotes()
-            
-        } catch (error) {
-           alert(`An error occurred: ${error}`);
-            
-        }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if(!title || !content){
+      alert("Please enter title and content of your notes!")
+      return
     }
-  return (
-    <div>
-        <h3>Create New Note</h3>
-      <form onSubmit={handleSubmit}
-       style={{
-        display:"flex", 
-        flexDirection:"column",
-        alignItems:"center"
-       }}
-       >
-        <input type="text" placeholder='Enter Title' value={title} onChange={(e)=>setTitle(e.target.value)} />
-        <textarea placeholder='Enter Content' value={content} onChange={(e)=>setContent(e.target.value)} ></textarea>
+    setTitle("");
+    setContent("");
+    setStatus(false);
 
-        <label>Completed</label>
-        <input type="checkbox" checked={status} onChange={(e)=>setStatus(e.target.checked)}   />
-        <button>Add New Note</button>
+    const token = localStorage.getItem("token");
+    try {
+      setIsLoading(true);
+      const res = await fetch(`https://devnoteapp.onrender.com/note/create`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ title, content, status }),
+      });
+      const data = await res.json();
+
+      setIsLoading(false);
+      alert(data.message);
+
+      fetchNotes();
+    } catch (error) {
+      setIsLoading(false);
+      alert(`An error occurred: ${error}`);
+    }
+  };
+  return (
+    <Box>
+      <form
+        style={{
+          border: "1px solid black",
+          padding: "10px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "10px",
+        }}
+      >
+        <Field label="Title" required>
+          <Input
+            placeholder="Enter your title of note"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </Field>
+
+        <Field label="Content" required>
+          <Textarea
+            placeholder="Enter content here"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          />
+        </Field>
+
+        <Checkbox
+          checked={status}
+          variant={"outline"}
+          onCheckedChange={(e) => setStatus(e.checked)}
+        >
+          Status
+        </Checkbox>
+        <Button
+          loading={isLoading ? true : false}
+          loadingText={isLoading ? "Creating Note" : ""}
+          onClick={handleSubmit}
+        >
+          Create Note
+        </Button>
       </form>
-    </div>
-  )
+    </Box>
+  );
 }
 
-export default CreateNote
+export default CreateNote;

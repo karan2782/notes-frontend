@@ -47,7 +47,7 @@ function Login() {
     }
   };
   return (
-    <Box>
+    <Box fontFamily='Playwrite IS'>
       <form
         style={{
           width: "30vw",
@@ -60,7 +60,7 @@ function Login() {
         }}
         onSubmit={handleLogin}
       >
-        <Text fontSize="20px" fontWeight='500'>Login</Text>
+        <Text fontSize="20px" fontWeight='bold'>Login</Text>
         <Field label="Email" required>
           <Input
             placeholder="Enter your email"
