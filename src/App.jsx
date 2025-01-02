@@ -5,6 +5,7 @@ import Register from './pages/Register'
 import Notes from './pages/Notes'
 import { AuthProvider } from './context/AuthPrivider'
 import NavPage from './pages/NavPage'
+import Test from './component/Test'
 
 function App() {
   
@@ -17,6 +18,7 @@ function App() {
     <Route path='/register' element={<Register/>} />
     <Route path='/login' element={<Login/>} />
     <Route path='/notes' element={ <AuthProvider> <Notes/></AuthProvider>} />
+    <Route path='/test' element={<Test />} />
    </Routes>
 
    </>
