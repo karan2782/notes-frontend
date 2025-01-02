@@ -48,10 +48,10 @@ function Login() {
     }
   };
   return (
-    <Box fontFamily='Playwrite IS'>
+    <Box fontFamily='Playwrite IS' width={{base:"160px", sm:"200px", md:"300px", lg:"400px", xl:"500px"}} margin="auto">
       <form
         style={{
-          width: "30vw",
+          
           border: "1px solid grey",
           borderRadius:'10px',
           padding: "20px",
@@ -61,30 +61,34 @@ function Login() {
         }}
         onSubmit={handleLogin}
       >
-        <Text fontSize="20px" fontWeight='bold'>Login</Text>
-        <Field label="Email" required>
-          <Input
+        <Text fontSize={{base:"12px", sm:"14px", md:"16px", lg:"20px", xl:"24px"}} fontWeight='bold'>Login</Text>
+        <Field label="Email"  required fontSize={{base:"10px", sm:"12px", md:"15px", lg:"16px"}} >
+          <Input 
+          fontSize={{base:"10px", sm:"12px", md:"15px", lg:"16px"}} 
             placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="email"
             autoComplete="email"
+            height={{base:"17px", sm:"20px", md:"40px"}}
           />
         </Field>
         <Field label="Password" required>
           <Input
+          fontSize={{base:"10px", sm:"12px", md:"15px", lg:"16px"}} 
             placeholder="Enter your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             type='password'
             autoComplete="password"
+            height={{base:"17px", sm:"20px", md:"40px"}}
           />
         </Field>
-        <Button loading={loading} backgroundColor='blue.600' type='submit' mt="3" width="full" loadingText= {loading?"Logging in...":""}>
+        <Button size={{base:'xs', sm:'sm', md:'md', lg:'lg', xl:'xl'}} fontSize={{base:"10px", sm:"12px", md:"15px", lg:"16px"}}  loading={loading} backgroundColor='blue.600' type='submit' mt="3" width="full" loadingText= {loading?"Logging in...":""}>
           Login
         </Button>
-        <Text mt='5'>
-          <Link style={{color:"blue"}} to='/register'>Please Register</Link> , if you're not registered 
+        <Text mt='5' fontSize={{base:"10px", sm:"12px", md:"15px", lg:"16px"}} >
+          <Link  fontSize={{base:"10px", sm:"12px", md:"15px", lg:"16px"}}  style={{color:"blue"}} to='/register'>Please Register</Link> , if you're not registered 
         </Text>
       </form>
     </Box>

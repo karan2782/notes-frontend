@@ -46,38 +46,41 @@ function Register() {
   };
 
   return (
-    <Box fontFamily="Playwrite IS">
+    <Box fontFamily="Playwrite IS" m='auto'  width={{base:"160px", sm:"200px", md:"300px", lg:"400px", xl:"500px"}}>
       <form>
         <Stack
           borderRadius="10px"
           border="1px solid grey"
-          width="30vw"
+          
           margin="auto"
           p="5"
           mt="5"
           gap="20px"
         >
-          <Text textAlign="center" fontSize="20px" fontWeight="bold">
+          <Text fontSize={{base:"12px", sm:"14px", md:"16px", lg:"20px", xl:"24px"}} textAlign="center"  fontWeight="bold">
             Register
           </Text>
-          <Field required label="Name">
+          <Field  fontSize={{base:"10px", sm:"12px", md:"15px", lg:"16px"}} required label="Name">
             <Input
-
+               fontSize={{base:"10px", sm:"12px", md:"15px", lg:"16px"}}
               placeholder="Enter your name"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              height={{base:"17px", sm:"20px", md:"40px"}}
             />
           </Field>
 
-          <Field required label="Email">
+          <Field required fontSize={{base:"10px", sm:"12px", md:"15px", lg:"16px"}} label="Email">
             <Input
+             fontSize={{base:"10px", sm:"12px", md:"15px", lg:"16px"}}
             type='email'
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              height={{base:"17px", sm:"20px", md:"40px"}}
             />
           </Field>
-          <Field required label="Select your gender">
+          <Field required fontSize={{base:"10px", sm:"12px", md:"15px", lg:"16px"}} label="Select your gender">
             <select value={gender} onChange={(e) => setGender(e.target.value)}>
               <option value="">-</option>
               <option value="male">Male</option>
@@ -85,16 +88,20 @@ function Register() {
             </select>
           </Field>
 
-          <Field required label="Password">
+          <Field required fontSize={{base:"10px", sm:"12px", md:"15px", lg:"16px"}} label="Password">
             <Input
+            fontSize={{base:"10px", sm:"12px", md:"15px", lg:"16px"}}
             type="password"
               placeholder="Enter your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              height={{base:"17px", sm:"20px", md:"40px"}}
             />
           </Field>
 
           <Button
+          size={{base:'xs', sm:'sm', md:'md', lg:'lg', xl:'xl'}}
+          fontSize={{base:"10px", sm:"12px", md:"15px", lg:"16px"}}
             loading={loading ? true : false}
             loadingText={loading ? "Registering..." : ""}
             type="submit"
@@ -104,7 +111,8 @@ function Register() {
             {loading ? "Registering..." : "Register"}
           </Button>
 
-          <Text mt="5">
+          <Text mt="5"
+           fontSize={{base:"10px", sm:"12px", md:"15px", lg:"16px"}}>
             <Link style={{ color: "blue" }} to="/login">
               Please Login
             </Link>
